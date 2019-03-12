@@ -44,6 +44,23 @@ module.exports = {
           include: 5
         }
       },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
+        head: false,
+        anonymize: true
+      },
+    },
+    {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: process.env.SENRY_DSN_URL,
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: activeEnv,
+        enabled: (() => ["production", "staging"].indexOf(activeEnv) !== -1)()
+      }
     }
   ],
 }
