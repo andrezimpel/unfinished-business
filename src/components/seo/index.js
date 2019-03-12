@@ -10,22 +10,18 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ title, metaTitle, metaDescription, sharingTitle, sharingDescription, sharingImage, currentUrl }) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            title
-            description
-            author
+            siteTitle: title
           }
         }
       }
     `
   )
-
-  const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
@@ -33,19 +29,37 @@ function SEO({ description, lang, meta, keywords, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.siteMetadata.siteTitle}`}
+      link={[
+        {
+            href: currentUrl,
+            rel: "canonical"
+        }
+      ]}
       meta={[
+        {
+          name: `title`,
+          content: metaTitle,
+        },
         {
           name: `description`,
           content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title,
+          content: sharingTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: sharingDescription,
+        },
+        {
+          property: `og:image`,
+          content: `http:${sharingImage}`,
+        },
+        {
+          property: `og:url`,
+          content: currentUrl,
         },
         {
           property: `og:type`,
@@ -56,17 +70,21 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: `summary`,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
           name: `twitter:title`,
-          content: title,
+          content: sharingTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: sharingDescription,
         },
+        {
+          name: `twitter:image`,
+          content: sharingImage,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: sharingTitle,
+        }
       ]
         .concat(
           keywords.length > 0
@@ -82,17 +100,26 @@ function SEO({ description, lang, meta, keywords, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
+  lang: `de`,
+  title: '',
+  metaTitle: '',
+  metaDescription: '',
+  sharingTitle: '',
+  sharingDescription: '',
+  sharingImage: '',
+  currentUrl: '',
   keywords: [],
 }
 
 SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  metaTitle: PropTypes.string,
+  metaDescription: PropTypes.string,
+  sharingTitle: PropTypes.string,
+  sharingDescription: PropTypes.string,
+  sharingImage: PropTypes.string,
+  currentUrl: PropTypes.string,
+  keywords: PropTypes.arrayOf(PropTypes.string)
 }
 
-export default SEO
+export default SEO;
