@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './renderer.module.scss';
+
 class SectionsRenderer extends Component {
   render() {
     const { sections } = this.props;
@@ -8,7 +10,7 @@ class SectionsRenderer extends Component {
     if (!sections || sections.length === 0) { return null; }
 
     const renderedSections = sections.map((section, index) => {
-      const key = section.contentful_id + index;
+      // const key = section.contentful_id + index;
 
       switch (section.__typename) {
         // case 'component':

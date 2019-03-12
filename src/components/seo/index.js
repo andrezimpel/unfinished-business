@@ -10,7 +10,8 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ title, metaTitle, metaDescription, sharingTitle, sharingDescription, sharingImage, currentUrl }) {
+function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescription, sharingImage, currentUrl, lang, keywords }) {
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -21,7 +22,7 @@ function SEO({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         }
       }
     `
-  )
+  );
 
   return (
     <Helmet
@@ -93,13 +94,12 @@ function SEO({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
                 content: keywords.join(`, `),
               }
             : []
-        )
-        .concat(meta)}
+        )}
     />
   )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   lang: `de`,
   title: '',
   metaTitle: '',
@@ -111,7 +111,7 @@ SEO.defaultProps = {
   keywords: [],
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   title: PropTypes.string.isRequired,
   metaTitle: PropTypes.string,
   metaDescription: PropTypes.string,
@@ -122,4 +122,4 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string)
 }
 
-export default SEO;
+export default Seo;
