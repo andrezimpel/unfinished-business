@@ -1,0 +1,12 @@
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@mixin animate-property($property, $duration: 1s) {
+  transition: $property $duration ease-in-out;
+}
+
+@mixin animate($duration: 1s) {
+  transition: all $duration ease-in-out;
+}
