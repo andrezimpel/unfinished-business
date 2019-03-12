@@ -6,8 +6,10 @@
 
 // You can delete this file if you're not using it
 
-const path = require('path');
-import { pathTo } from './src/routes';
+const path = require('path')
+const { pathTo } = require('./src/routes');
+
+// TODO: FIX THAT
 
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
@@ -15,7 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const pageTemplate = path.resolve(`src/container/page/index.js`);
+    const pageTemplate = path.resolve(`src/containers/page/index.js`);
 
     const image = `
       title
@@ -52,19 +54,24 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 slug
                 metaTitle
-                metaDescription
+                metaDescription {
+                  metaDescription
+                }
                 sharingTitle
-                sharingDescription
-                sharingImage
-                currentUrl
-                keywords
-
+                sharingDescription {
+                  sharingDescription
+                }
+                sharingImage {
+                  ${image}
+                }
+                metaKeywords
                 sections {
                   __typename
                 }
               }
             }
           }
+        }
         `
       ).then(result => {
         if (result.errors) {
@@ -73,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create pages for each markdown file.
         result.data.allContentfulPage.edges.forEach(({ node }) => {
-          const slug = pathTo(node.slug);
+          const slug = pathTo(node);
 
           createPage({
             path: slug,

@@ -1,4 +1,4 @@
-export function pathTo(resource) {
+function pathTo(resource) {
   switch (resource.__typename) {
     // case 'component':
     //   return `/${resource.slug}`;
@@ -6,3 +6,5 @@ export function pathTo(resource) {
       return `/${resource.slug}`;
   }
 }
+
+module.exports.pathTo = pathTo;
