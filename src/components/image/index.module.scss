@@ -1,0 +1,35 @@
+@import '../../assets/theme.scss';
+
+.figure {
+  margin-bottom: 0;
+
+  figcaption {
+    color: white;
+    font-size: .8em;
+    margin-top: $space-10;
+    padding-right: $space-10;
+    text-align: right;
+
+    @include media-breakpoint-up(md) {
+      padding-right: $space-20;
+    }
+  }
+}
+
+.wrapper {
+  max-width: 100%;
+  padding-top: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.image {
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  min-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
