@@ -8,8 +8,13 @@ class Image extends Component {
     if (this.props.image === undefined) { return null; }
 
     return (
-      <TrackVisibility once partialVisibility offset={800}>
-        <ResponsiveImageComponent {...this.props}/>
+      <TrackVisibility once partialVisibility offset={400}>
+        {({ isVisible }) => {
+          if (isVisible) {
+            return <ResponsiveImageComponent {...this.props}/>
+          }
+          return null;
+        }}
       </TrackVisibility>
     );
   };
