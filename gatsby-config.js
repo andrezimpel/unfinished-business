@@ -8,7 +8,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `UNKNOWN X Tipoff Gatsby`
+    title: `UNKNOWN X Tipoff Gatsby`,
+    siteUrl: process.env.SITE_URL
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -22,15 +23,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
@@ -39,10 +38,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_TOKEN,
-        host: process.env.CONTENTFUL_HOST,
-        cdaQuery: {
-          include: 5
-        }
+        host: process.env.CONTENTFUL_HOST
       },
     },
     {

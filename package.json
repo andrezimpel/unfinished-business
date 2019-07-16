@@ -17,6 +17,7 @@
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sentry": "^1.0.1",
     "gatsby-plugin-sharp": "^2.0.27",
+    "gatsby-plugin-sitemap": "^2.2.0",
     "gatsby-source-contentful": "^2.0.37",
     "gatsby-source-filesystem": "^2.0.24",
     "gatsby-transformer-sharp": "^2.1.16",
