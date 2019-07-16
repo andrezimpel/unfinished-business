@@ -5,10 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import favicon from '../../images/favicon.ico';
 
 function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescription, sharingImage, currentUrl, lang, keywords }) {
 
@@ -18,6 +19,7 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         site {
           siteMetadata {
             siteTitle: title
+            siteUrl
           }
         }
       }
@@ -30,11 +32,14 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.siteTitle}`}
+      titleTemplate={`%s - ${site.siteMetadata.siteTitle}`}
       link={[
         {
-            href: currentUrl,
-            rel: "canonical"
+          href: site.siteMetadata.siteUrl + currentUrl,
+          rel: "canonical"
+        },
+        {
+          rel: "icon", type: "image/ico", sizes: "16x16", href: `${favicon}`
         }
       ]}
       meta={[
@@ -60,7 +65,7 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         },
         {
           property: `og:url`,
-          content: currentUrl,
+          content: site.siteMetadata.siteUrl + currentUrl,
         },
         {
           property: `og:type`,
