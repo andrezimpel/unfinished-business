@@ -2,21 +2,12 @@ import React from "react";
 
 import styles from './index.module.scss';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <header className={styles.header}>
-        header
-      </header>
-    )
-  }
-}
-
-Header.propTypes = {
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
+const Header = () => {
+  return (
+    <header className={styles.header}>
+      header
+    </header>
+  )
+};
 
 export default Header;
