@@ -29,7 +29,8 @@
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.6",
     "react-on-screen": "^2.1.1",
-    "remark-breaks": "^1.0.2"
+    "remark-breaks": "^1.0.2",
+    "universal-cookie": "^4.0.2"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
