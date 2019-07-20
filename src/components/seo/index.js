@@ -93,7 +93,7 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         }
       ]
         .concat(
-          keywords.length > 0
+          (keywords !== null && keywords.length > 0)
             ? {
                 name: `keywords`,
                 content: keywords.join(`, `),
