@@ -16,10 +16,10 @@ class Page extends React.Component {
         <Seo
           title={title}
           metaTitle={metaTitle}
-          metaDescription={metaDescription.metaDescription}
+          metaDescription={metaDescription && metaDescription.metaDescription}
           sharingTitle={sharingTitle}
-          sharingDescription={sharingDescription.sharingDescription}
-          sharingImage={sharingImage.file.url}
+          sharingDescription={sharingDescription && sharingDescription.sharingDescription}
+          sharingImage={sharingImage && sharingImage.file && sharingImage.file.url}
           currentUrl={pathTo(this.props.pageContext)}
           keywords={metaKeywords}
         />
