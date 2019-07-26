@@ -118,7 +118,7 @@ class ResponsiveImageComponent extends Component {
               <i className="fas fa-circle-notch fa-spin"></i>
             </div>
           )}
-          <img className={styles.image} src={imgUrl} srcSet={`${imgUrl}, ${imgUrl2x}, ${imgUrl3x}`} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
+          <img className={styles.image} src={imgUrl} srcSet={`${imgUrl}, ${imgUrl2x} 2x, ${imgUrl3x} 3x`} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
         </div>
         {((showCaption && image.title) &&
           <figcaption>{image.title}</figcaption>
