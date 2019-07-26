@@ -4,7 +4,7 @@
   margin-bottom: 0;
 
   figcaption {
-    color: white;
+    color: $gray;
     font-size: .8em;
     margin-top: $space-10;
     padding-right: $space-10;
@@ -23,6 +23,20 @@
   z-index: 1;
 }
 
+.loading {
+  align-items: center;
+  bottom: 0;
+  color: $text-color;
+  display: flex;
+  font-size: 1.4em;
+  left: 0;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
 .image {
   @include animate(.2s);
 
@@ -35,6 +49,7 @@
   right: 0;
   top: 0;
   width: 100%;
+  z-index: 3;
 
   &[data-loaded="true"] {
     opacity: 1;
