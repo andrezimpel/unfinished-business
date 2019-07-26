@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import TrackVisibility from 'react-on-screen';
+
 import styles from './index.module.scss';
 
 class Image extends Component {
   render() {
-    if (this.props.image === undefined) { return null; }
+    const { image, disableLazyLoad } = this.props;
+    if (image === undefined) { return null; }
+
+    if (disableLazyLoad) {
+      return <ResponsiveImageComponent {...this.props}/>;
+    }
 
     return (
       <TrackVisibility once partialVisibility offset={30}>
         {({ isVisible }) => {
-          if (isVisible) {
-            return <ResponsiveImageComponent {...this.props}/>
-          }
-          return null;
+          return isVisible ? <ResponsiveImageComponent {...this.props}/> : null;
         }}
       </TrackVisibility>
     );
@@ -26,68 +28,103 @@ class ResponsiveImageComponent extends Component {
     super(props);
 
     this.state = {
-      width: this.props.defaultWidth,
+      width: null,
       height: null,
       loaded: false,
-      fit: 'thumb'
+      fit: 'thumb',
+      showLoadingIcon: false
     }
 
-    this.calculateSize = this.calculateSize.bind(this);
     this.onImageLoad = this.onImageLoad.bind(this);
+    this.calculateBounds = this.calculateBounds.bind(this);
+    this.triggerLoadingIcon = this.triggerLoadingIcon.bind(this);
   }
 
+
   componentDidMount() {
-    this.calculateSize();
-    window.addEventListener("resize", this.calculateSize);
+    this.calculateBounds();
+    this.triggerLoadingIcon();
+
+    window.addEventListener("resize", this.calculateBounds);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.calculateSize);
+    window.removeEventListener("resize", this.calculateBounds);
   }
 
-  calculateSize() {
-    const { stateHeight, stateWidth } = this.state;
-    let height = Math.round(this.wrapper.getBoundingClientRect().height);
-    let width = Math.round(this.wrapper.getBoundingClientRect().width);
-
-    if (width > 2000) {
-      const ratio = 2000 / width;
-      width = 2000;
-      height = parseInt(height * ratio, 10);
-    }
-
-    if (stateHeight !== height || stateWidth !== width) {
-      this.setState({ height, width });
-    }
+  triggerLoadingIcon() {
+    const that = this;
+    setTimeout(function(){
+      that.setState({ showLoadingIcon: true });
+    }, 700);
   }
 
   onImageLoad() {
-    this.setState({ loaded: true });
+    this.setState({ loaded: true, showLoadingIcon: false });
+  }
+
+  calculateBounds() {
+    const { image } = this.props;
+    const wrapperWidth = Math.round(this.wrapper.getBoundingClientRect().width);
+    const wrapperHeight = Math.round(this.wrapper.getBoundingClientRect().height);
+
+    let width = wrapperWidth;
+    let height = wrapperHeight;
+    let ratio = this.props.ratio;
+
+    if (ratio === undefined) {
+      ratio = (image.file.details.image.height / image.file.details.image.width) * 100;
+    }
+
+    if (wrapperHeight === 0) {
+      height = parseInt(wrapperWidth * (ratio / 100));
+    }
+
+    // check if the height or width is over 2000
+    if (width > 2000) {
+      width = 2000;
+      height = parseInt(width * (ratio / 100));
+    }
+
+    // update ratio to have just two decimals
+    ratio = parseFloat(ratio).toFixed(2);
+
+    this.setState({ width, height, ratio });
+  }
+
+  imgUrl(path, width, height, fit, quality) {
+    return `${path}?w=${width}&h=${height}&fit=${fit}&q=${quality}`;
   }
 
   render() {
     const { image, showCaption } = this.props;
-    const url = image.file.url;
-    const details = image.file.details.image;
-    const { height, width, loaded, fit } = this.state;
-    const ratio = this.props.ratio ? this.props.ratio : (details.height / details.width * 100);
+    const { width, height, ratio, fit, loaded, showLoadingIcon } = this.state;
 
-    const imgUrl = url + '?w=' + width + '&h=' + height + '&fit=' + fit + '&q=90';
-    const imgUrl2x = url + '?w=' + (width*2) + '&h=' + (height*2) + '&fit=' + fit + '&q=70 2x';
-    const imgUrl3x = url + '?w=' + (width*3) + '&h=' + (height*3) + '&fit=' + fit + '&q=50 3x';
+    if (width === null || height === null) {
+      return (
+        <div ref={(ref) => this.wrapper = ref} style={{ paddingTop: ratio + '%'}}/>
+      )
+    }
+
+    const imgUrl = this.imgUrl(image.file.url, width, height, fit, '90');
+    const imgUrl2x = this.imgUrl(image.file.url, (width*2), (height*2), fit, '70');
+    const imgUrl3x = this.imgUrl(image.file.url, (width*3), (height*3), fit, '50');;
 
     return (
       <figure key={image.contentfulId} className={styles.figure}>
-        <div ref={(ref) => this.wrapper = ref} className={styles.wrapper} style={{ paddingTop: parseFloat(ratio).toFixed(2) + '%'}}>
-          {((width !== null && height !== null) &&
-            <img className={styles.image} src={imgUrl} srcSet={`${imgUrl}, ${imgUrl2x}, ${imgUrl3x}`} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
+        <div ref={(ref) => this.wrapper = ref} className={styles.wrapper} style={{ paddingTop: ratio + '%'}}>
+          {( showLoadingIcon &&
+            <div className={styles.loading}>
+              <i className="fas fa-circle-notch fa-spin"></i>
+            </div>
           )}
+          <img className={styles.image} src={imgUrl} srcSet={`${imgUrl}, ${imgUrl2x}, ${imgUrl3x}`} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
         </div>
         {((showCaption && image.title) &&
           <figcaption>{image.title}</figcaption>
         )}
       </figure>
-    );
+    )
   }
 }
 
@@ -95,11 +132,13 @@ Image.propTypes = {
   image: PropTypes.object.isRequired,
   defaultWidth: PropTypes.number,
   ratio: PropTypes.number,
-  showCaption: PropTypes.bool
+  showCaption: PropTypes.bool,
+  disableLazyLoad: PropTypes.bool
 }
 
 Image.defaultProps = {
-  defaultWidth: 500
+  defaultWidth: 500,
+  disableLazyLoad: false
 }
 
 export default Image;
