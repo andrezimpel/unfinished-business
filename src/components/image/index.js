@@ -92,7 +92,11 @@ class ResponsiveImageComponent extends Component {
     this.setState({ width, height, ratio });
   }
 
-  imgUrl(path, width, height, fit, quality) {
+  imgUrl(path, width, height, fit, quality, format=null) {
+    if (format !== null) {
+      return `${path}?w=${width}&h=${height}&fit=${fit}&q=${quality}&fm=${format}`;
+    }
+
     return `${path}?w=${width}&h=${height}&fit=${fit}&q=${quality}`;
   }
 
@@ -108,7 +112,11 @@ class ResponsiveImageComponent extends Component {
 
     const imgUrl = this.imgUrl(image.file.url, width, height, fit, '90');
     const imgUrl2x = this.imgUrl(image.file.url, (width*2), (height*2), fit, '70');
-    const imgUrl3x = this.imgUrl(image.file.url, (width*3), (height*3), fit, '50');;
+    const imgUrl3x = this.imgUrl(image.file.url, (width*3), (height*3), fit, '50');
+
+    const imgUrlWebP = this.imgUrl(image.file.url, width, height, fit, '90', 'webp');
+    const imgUrl2xWebP = this.imgUrl(image.file.url, (width*2), (height*2), fit, '70', 'webp');
+    const imgUrl3xWebP = this.imgUrl(image.file.url, (width*3), (height*3), fit, '50', 'webp');
 
     return (
       <figure key={image.contentfulId} className={styles.figure}>
@@ -118,7 +126,11 @@ class ResponsiveImageComponent extends Component {
               <i className="fas fa-circle-notch fa-spin"></i>
             </div>
           )}
-          <img className={styles.image} src={imgUrl} srcSet={`${imgUrl}, ${imgUrl2x} 2x, ${imgUrl3x} 3x`} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
+          <picture>
+            <source srcSet={`${imgUrlWebP}, ${imgUrl2xWebP} 2x, ${imgUrl3xWebP} 3x`} type="image/webp"/>
+            <source srcSet={`${imgUrl}, ${imgUrl2x} 2x, ${imgUrl3x} 3x`} type="image/jpeg"/>
+            <img className={styles.image} src={imgUrl} alt={image.description} title={image.title} onLoad={this.onImageLoad} data-loaded={loaded}/>
+          </picture>
         </div>
         {((showCaption && image.title) &&
           <figcaption>{image.title}</figcaption>
