@@ -13,6 +13,7 @@ set :keep_releases, 2
 # move the build to the shared dirs
 # with that the blog won't go offline during a deployment
 set :linked_dirs, [
+  "build",
   "public",
   "node_modules"
 ]
@@ -22,7 +23,7 @@ namespace :deploy do
   before :restart, :build_public do
     on roles(:app) do
       within release_path do
-        execute "cd #{deploy_to}/shared && rm -rf node_modules && mkdir node_modules && cd ../current && npm install && ENV=#{fetch(:stage)} npx gatsby build"
+        execute "cd #{deploy_to}/shared && rm -rf node_modules && mkdir node_modules && cd ../current && npm install && rm -rf public/* && ENV=#{fetch(:stage)} npx gatsby build && rm -rf build/* && cp -a public/. build/"
       end
     end
   end
