@@ -75,7 +75,8 @@ exports.createPages = ({ graphql, actions }) => {
         `
       ).then(result => {
         if (result.errors) {
-          reject(result.errors)
+          console.log(result.errors);
+          reject(result.errors);
         }
 
         // Create pages for each markdown file.
