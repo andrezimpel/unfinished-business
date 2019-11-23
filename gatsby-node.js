@@ -17,7 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const pageTemplate = path.resolve(`src/containers/page/index.js`);
+    const pageTemplate = path.resolve(`src/templates/page/index.js`);
 
     const image = `
       title
@@ -51,23 +51,9 @@ exports.createPages = ({ graphql, actions }) => {
           allContentfulPage(limit: 1000) {
             edges {
               node {
-                title
+                __typename
+                id
                 slug
-                metaTitle
-                metaDescription {
-                  metaDescription
-                }
-                sharingTitle
-                sharingDescription {
-                  sharingDescription
-                }
-                sharingImage {
-                  ${image}
-                }
-                metaKeywords
-                sections {
-                  __typename
-                }
               }
             }
           }
