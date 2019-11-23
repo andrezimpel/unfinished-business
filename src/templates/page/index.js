@@ -58,7 +58,7 @@ export const query = graphql`
       sharingImage {
         ...Image
       }
-      keywords
+      metaKeywords
       sections {
         __typename
       }
