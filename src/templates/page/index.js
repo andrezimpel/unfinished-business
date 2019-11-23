@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../../components/layout/index';
@@ -8,21 +7,46 @@ import Seo from '../../components/seo';
 import { pathTo } from '../../routes';
 import styles from './index.module.scss';
 
-const Page = ({ data }) => (
-  <Layout>
-
-    <div title={title} className={styles.sections}>
-      <SectionsRenderer sections={sections}/>
-    </div>
-  </Layout>
-)
+const Page = ({ data: { page: {
+  title='Please add Title',
+  slug,
+  sections=[],
+  metaTitle='',
+  metaDescription,
+  metaKeywords=[],
+  sharingTitle='',
+  sharingDescription,
+  sharingImage
+}}}) => {
+  return (
+    <>
+      <Seo
+        title={title}
+        metaTitle={metaTitle}
+        metaDescription={metaDescription && metaDescription.metaDescription}
+        sharingTitle={sharingTitle}
+        sharingDescription={sharingDescription && sharingDescription.sharingDescription}
+        sharingImage={sharingImage && sharingImage.file && sharingImage.file.url}
+        currentUrl={pathTo({ __typename: 'ContentfulPage', slug: slug })}
+        keywords={metaKeywords}
+      />
+      <Layout>
+        <h1>{title}</h1>
+        <div className={styles.sections}>
+          <SectionsRenderer sections={sections}/>
+        </div>
+      </Layout>
+    </>
+  )
+}
 
 export default Page;
 
 export const query = graphql`
   query PageQuery($id: String!) {
-    contentfulPage(id: { eq: $id}) {
+    page: contentfulPage(id: { eq: $id}) {
       title
+      slug
       metaTitle
       metaDescription {
         metaDescription
@@ -32,24 +56,12 @@ export const query = graphql`
         sharingDescription
       }
       sharingImage {
-        id
+        ...Image
       }
-      metaKeywords: keywords
+      keywords
       sections {
         __typename
       }
     }
   }
 `;
-
-
-// <Seo
-//   title={title}
-//   metaTitle={metaTitle}
-//   metaDescription={metaDescription && metaDescription.metaDescription}
-//   sharingTitle={sharingTitle}
-//   sharingDescription={sharingDescription && sharingDescription.sharingDescription}
-//   sharingImage={sharingImage && sharingImage.file && sharingImage.file.url}
-//   currentUrl={pathTo(this.props.pageContext)}
-//   keywords={metaKeywords}
-// />

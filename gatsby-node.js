@@ -19,30 +19,6 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const pageTemplate = path.resolve(`src/templates/page/index.js`);
 
-    const image = `
-      title
-      description
-      contentful_id
-      file {
-        url
-        details {
-          image {
-            width
-            height
-          }
-        }
-      }
-    `;
-
-
-    // section union
-    // ... on ContentfulText {
-    //   contentful_id
-    //   text {
-    //     text
-    //   }
-    // }
-
     // Query for markdown nodes to use in creating pages.
     resolve(
       graphql(

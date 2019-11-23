@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import TrackVisibility from 'react-on-screen';
 
 import styles from './index.module.scss';
@@ -154,3 +155,23 @@ Image.defaultProps = {
 }
 
 export default Image;
+
+export const query = graphql`
+  fragment Image on ContentfulAsset {
+    title
+    description
+    contentful_id
+    file {
+      url
+      details {
+        image {
+          width
+          height
+        }
+      }
+    }
+    fluid {
+      base64
+    }
+  }
+`;
