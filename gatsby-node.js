@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
         {
-          allContentfulPage(limit: 1000) {
+          pages: allContentfulPage(limit: 1000) {
             edges {
               node {
                 __typename
@@ -42,7 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create pages for each markdown file.
-        result.data.allContentfulPage.edges.forEach(({ node }) => {
+        result.data.pages.edges.forEach(({ node }) => {
           const slug = pathTo(node);
 
           createPage({
