@@ -1,0 +1,6 @@
+@import '../../assets/theme.scss';
+
+.container {
+  @include make-container;
+  @include make-container-max-widths;
+}

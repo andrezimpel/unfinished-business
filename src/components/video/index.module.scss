@@ -1,0 +1,29 @@
+@import '../../assets/theme.scss';
+
+.video {
+  line-height: 0;
+}
+
+.wrapper {
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 56.23%;
+  }
+
+  iframe {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
