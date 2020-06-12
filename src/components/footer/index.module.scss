@@ -1,5 +1,16 @@
 @import '../../assets/theme.scss';
 
 .footer {
-  background-color: $gray;
+  color: white;
+  margin: $space-60 0 $space-80 0;
+  text-align: center;
+}
+
+.copyright {
+  margin-bottom: $space-8;
+}
+
+.link {
+  color: $gray;
+  padding: $space-5 $space-10;
 }

@@ -2,6 +2,10 @@
 @import '../../assets/theme.scss';
 @import "~bootstrap/scss/_reboot.scss";
 
+body {
+  background-color: $black;
+}
+
 .main {
   position: relative;
 }

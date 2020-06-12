@@ -4,7 +4,8 @@ $gray-light: #b1b1b1;
 $gray: #aaaaaa;
 $gray-dark: #222;
 
-$primary: #bcbde2;
+$orange: #fd513b;
+$primary: $orange;
 
 // gaps
 $space-3: 3px;
@@ -28,4 +29,5 @@ $space-100: 100px;
 $text-color: $black;
 $body-color: $text-color;
 $link-color: $primary;
+$link-hover-color: $orange;
 // $font-family-sans-serif: $fira;
