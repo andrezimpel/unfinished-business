@@ -43,8 +43,13 @@
 
   &[data-type='large'] {
     .item {
-      max-height: 120px;
-      max-width: 300px;
+      max-height: 100px;
+      max-width: 240px;
+
+      @include media-breakpoint-up(md) {
+        max-height: 120px;
+        max-width: 300px;
+      }
     }
   }
 }
@@ -65,26 +70,3 @@
     vertical-align: center;
   }
 }
-
-
-
-// &[data-type='large'] {
-//   .item {
-//     flex: 0 0 100%;
-//     max-width: 100%;
-//
-//     img {
-//       max-width: 200px;
-//     }
-//
-//     @include media-breakpoint-up(md) {
-//       flex: 0 0 calc(100% / 3);
-//       max-width: calc(100% / 3);
-//
-//       img {
-//         max-height: 90px;
-//         max-width: 250px;
-//       }
-//     }
-//   }
-// }
