@@ -61,7 +61,7 @@ const Partner = () => {
   return (
     <div className={styles.partner}>
       <Container>
-        <h2 className={styles.headline}>Partner</h2>
+        <h2 className={styles.headline}><span>Unsere</span> Partner</h2>
         <Listing partner={primePartner} type='large'/>
         <Listing partner={partner}/>
       </Container>
