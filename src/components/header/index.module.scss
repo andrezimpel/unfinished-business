@@ -4,7 +4,7 @@
 }
 
 .logo {
-  margin: $space-30 auto $space-40 auto;
+  margin: $space-40 auto $space-60 auto;
   width: calc(100vw - 60px);
 
   @include media-breakpoint-up(md) {

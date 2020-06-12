@@ -3,11 +3,11 @@
 .statement {
   color: $gray;
   line-height: 1.6;
-  margin: $space-30 0;
+  margin: $space-40 0 $space-60 0;
 
   @include media-breakpoint-up(md) {
     font-size: 1.12em;
     line-height: 1.7;
-    margin: $space-60 0;
+    margin: $space-80 0;
   }
 }

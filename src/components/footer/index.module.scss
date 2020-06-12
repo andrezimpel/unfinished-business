@@ -2,8 +2,12 @@
 
 .footer {
   color: white;
-  margin: $space-60 0 $space-80 0;
+  margin: $space-100 0 $space-80 0;
   text-align: center;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 200px;
+  }
 }
 
 .copyright {
