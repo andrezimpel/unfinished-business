@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 import admedia from '../../assets/images/partner-logos/admedia.svg';
 import cb from '../../assets/images/partner-logos/chemnitz-basketball.svg';
 import eins from '../../assets/images/partner-logos/eins.svg';
+import mytag from '../../assets/images/partner-logos/mytag.svg';
 import niners from '../../assets/images/partner-logos/niners.svg';
 import haase from '../../assets/images/partner-logos/sanitaer-haase.svg';
 import unknownbasics from '../../assets/images/partner-logos/unknownbasics.svg';
@@ -48,6 +49,11 @@ const partner = [
     logo: haase,
     name: 'Sanitär Haase',
     link: 'https://www.sanitaer-haase.de/'
+  },
+  {
+    logo: mytag,
+    name: 'mytag Gmbh',
+    link: 'https://www.mytag.de/'
   }
 ];
 
