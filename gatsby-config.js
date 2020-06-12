@@ -8,7 +8,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `UNKNOWN X Tipoff Gatsby`,
+    title: `UNFINISHED BUSINESS`,
     siteUrl: process.env.SITE_URL
   },
   plugins: [
@@ -31,14 +31,6 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_TOKEN,
-        host: process.env.CONTENTFUL_HOST
       },
     },
     {
