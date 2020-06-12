@@ -10,6 +10,12 @@ const Home = () => (
   <Layout>
     <Seo
       title={'Home'}
+      sharingTitle={'Home'}
+      sharingDescription={'missing'}
+      metaTitle={'Unfinished Business Dokumentation'}
+      metaDescription={'Unfinished Business, der Weg der NINERS Chemnitz in die Basketball Bundesliga'}
+      keywords={['unfinished business', 'niners chemnitz', 'unfinishedbusiness', 'chemnitz', 'chemnitz basketball', 'video vision chemnitz', 'videovision', 'videovision chemnitz', 'unknownbasics', 'unknown basics', 'niners dokumentation']}
+      currentUrl={'/'}
     />
     <Video/>
     <Statement/>
@@ -19,18 +25,4 @@ const Home = () => (
 
 export default Home;
 
-
-// metaTitle={metaTitle}
-// metaDescription={metaDescription && metaDescription.metaDescription}
-// sharingTitle={sharingTitle}
-// sharingDescription={sharingDescription && sharingDescription.sharingDescription}
 // sharingImage={sharingImage && sharingImage.file && sharingImage.file.url}
-// currentUrl={pathTo({ __typename: 'ContentfulPage', slug: slug })}
-// keywords={metaKeywords}
-
-// <Layout>
-//   <h1>{title}</h1>
-//   <div className={styles.sections}>
-//     <SectionsRenderer sections={sections}/>
-//   </div>
-// </Layout>
