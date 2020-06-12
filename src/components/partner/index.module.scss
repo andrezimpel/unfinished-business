@@ -6,7 +6,6 @@
   margin: $space-30 0;
 
   @include media-breakpoint-up(md) {
-    font-size: 1.12em;
     line-height: 1.7;
     margin: $space-80 0;
   }
@@ -68,5 +67,20 @@
     max-height: 100%;
     max-width: 100%;
     vertical-align: center;
+  }
+}
+
+.cta {
+  color: $gray;
+  line-height: 1.4;
+  margin: auto;
+  margin-top: $space-60;
+  max-width: 600px;
+  text-align: center;
+}
+
+.br {
+  @include media-breakpoint-up(md) {
+    display: none;
   }
 }

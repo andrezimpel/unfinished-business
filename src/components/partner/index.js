@@ -14,26 +14,31 @@ import videovision from '../../assets/images/partner-logos/videovision.svg';
 const primePartner = [
   {
     logo: videovision,
-    name: 'VideoVision'
+    name: 'VideoVision',
+    link: 'https://www.videovision-chemnitz.de/'
   },
   {
     logo: niners,
-    name: 'NINERS Chemnitz'
+    name: 'NINERS Chemnitz',
+    link: 'https://www.chemnitz99.de/'
   },
   {
     logo: eins,
-    name: 'EINS Energie in Sachsen'
+    name: 'EINS Energie in Sachsen',
+    link: 'https://www.eins.de/'
   }
 ];
 
 const partner = [
   {
     logo: admedia,
-    name: 'ADMEDIA'
+    name: 'ADMEDIA',
+    link: 'https://www.admedia.de/'
   },
   {
     logo: unknownbasics,
-    name: 'UNKNOWN BASICS'
+    name: 'UNKNOWN BASICS',
+    link: 'https://www.unknownbasics.com/'
   },
   {
     logo: cb,
@@ -41,18 +46,30 @@ const partner = [
   },
   {
     logo: haase,
-    name: 'Sanitär Haase'
+    name: 'Sanitär Haase',
+    link: 'https://www.sanitaer-haase.de/'
   }
 ];
 
 const Listing = ({ partner, type='normal' }) => {
   return (
     <div className={styles.listing} data-type={type}>
-      {partner.map((partner, index) => (
-        <div key={index} className={styles.item}>
-          <img src={partner.logo} alt="" title={partner.name}/>
-        </div>
-      ))}
+      {partner.map((partner, index) => {
+        console.log(partner.link);
+        if (partner.link) {
+          return (
+            <a key={index} href={partner.link} rel="noreferrer" target="_blank" className={styles.item}>
+              <img src={partner.logo} alt="" title={partner.name}/>
+            </a>
+          )
+        } else {
+          return (
+            <div key={index} className={styles.item}>
+              <img src={partner.logo} alt="" title={partner.name}/>
+            </div>
+          )
+        }
+      })}
     </div>
   )
 }
@@ -64,6 +81,9 @@ const Partner = () => {
         <h2 className={styles.headline}><span>Unsere</span> Partner</h2>
         <Listing partner={primePartner} type='large'/>
         <Listing partner={partner}/>
+        <div className={styles.cta}>
+          Jetzt Partner werden!<br className={styles.br}/>Schreibt uns eine E-Mail an <a href="mailto:info@videovision-chemnitz.de?subject=Unfinished Business">info@videovision-chemnitz.de</a>
+        </div>
       </Container>
     </div>
   )
