@@ -4,9 +4,14 @@
 }
 
 .logo {
-  margin: $space-80 auto $space-100 auto;
-  max-width: 60vw;
-  width: calc(100vw - 30px);
+  margin: $space-30 auto $space-40 auto;
+  width: calc(100vw - 60px);
+
+  @include media-breakpoint-up(md) {
+    margin: $space-80 auto $space-100 auto;
+    max-width: 60vw;
+    width: calc(100vw - 30px);
+  }
 
   span {
     display: none;

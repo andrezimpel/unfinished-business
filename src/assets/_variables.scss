@@ -21,7 +21,7 @@ $space-100: 100px;
 
 
 // fonts
-// $fira: 'Fira Sans', sans-serif;
+$roboto: 'Roboto Mono';
 // $crush: 'CrushSmooth';
 
 
@@ -30,4 +30,4 @@ $text-color: $black;
 $body-color: $text-color;
 $link-color: $primary;
 $link-hover-color: $orange;
-// $font-family-sans-serif: $fira;
+$font-family-sans-serif: $roboto;
