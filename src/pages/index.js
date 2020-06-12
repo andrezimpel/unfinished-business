@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+import Statement from '../components/statement';
 import Video from '../components/video';
 
 const Home = () => (
@@ -10,6 +11,7 @@ const Home = () => (
       title={'Home'}
     />
     <Video/>
+    <Statement/>
   </Layout>
 )
 

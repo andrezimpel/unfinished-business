@@ -1,0 +1,13 @@
+@import '../../assets/theme.scss';
+
+.statement {
+  color: $gray;
+  line-height: 1.6;
+  margin: $space-30 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.12em;
+    line-height: 1.7;
+    margin: $space-60 0;
+  }
+}
