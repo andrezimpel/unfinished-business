@@ -61,7 +61,7 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         },
         {
           property: `og:image`,
-          content: `http:${sharingImage}`,
+          content: `${site.siteMetadata.siteUrl}${sharingImage}`,
         },
         {
           property: `og:url`,
@@ -85,7 +85,7 @@ function Seo({ title, metaTitle, metaDescription, sharingTitle, sharingDescripti
         },
         {
           name: `twitter:image`,
-          content: sharingImage,
+          content: `${site.siteMetadata.siteUrl}${sharingImage}`,
         },
         {
           name: `twitter:image:alt`,

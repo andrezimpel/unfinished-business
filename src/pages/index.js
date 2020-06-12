@@ -6,12 +6,15 @@ import Seo from '../components/seo';
 import Statement from '../components/statement';
 import Video from '../components/video';
 
+import sharingImage from '../images/sharing-image.jpg';
+
 const Home = () => (
   <Layout>
     <Seo
       title={'Home'}
       sharingTitle={'Home'}
-      sharingDescription={'missing'}
+      sharingDescription={'Der Weg der NINERS in die BBL'}
+      sharingImage={sharingImage}
       metaTitle={'Unfinished Business Dokumentation'}
       metaDescription={'Unfinished Business, der Weg der NINERS Chemnitz in die Basketball Bundesliga'}
       keywords={['unfinished business', 'niners chemnitz', 'unfinishedbusiness', 'chemnitz', 'chemnitz basketball', 'video vision chemnitz', 'videovision', 'videovision chemnitz', 'unknownbasics', 'unknown basics', 'niners dokumentation']}
@@ -24,5 +27,3 @@ const Home = () => (
 )
 
 export default Home;
-
-// sharingImage={sharingImage && sharingImage.file && sharingImage.file.url}
