@@ -4,6 +4,8 @@ import Container from '../container';
 
 import styles from './index.module.scss';
 import admedia from '../../assets/images/partner-logos/admedia.svg';
+import cwag from '../../assets/images/partner-logos/cwag.svg';
+import cwe from '../../assets/images/partner-logos/cwe.svg';
 import cb from '../../assets/images/partner-logos/chemnitz-basketball.svg';
 import eins from '../../assets/images/partner-logos/eins.svg';
 import mytag from '../../assets/images/partner-logos/mytag.svg';
@@ -54,6 +56,16 @@ const partner = [
     logo: mytag,
     name: 'mytag Gmbh',
     link: 'https://www.mytag.de/'
+  },
+  {
+    logo: cwag,
+    name: 'CWAG',
+    link: 'https://www.cwe-chemnitz.de'
+  },
+  {
+    logo: cwe,
+    name: 'CWE',
+    link: 'https://www.cawg.de'
   }
 ];
 
