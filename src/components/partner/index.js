@@ -14,12 +14,11 @@ import haase from '../../assets/images/partner-logos/sanitaer-haase.svg';
 import unknownbasics from '../../assets/images/partner-logos/unknownbasics.svg';
 import videovision from '../../assets/images/partner-logos/videovision.svg';
 
+import sparkasse from '../../assets/images/partner-logos/sparkasse-chemnitz.svg';
+import rentenBoster from '../../assets/images/partner-logos/renten-booster.svg';
+import elektroVieweg from '../../assets/images/partner-logos/elektro-vieweg.svg';
+
 const primePartner = [
-  {
-    logo: videovision,
-    name: 'VideoVision',
-    link: 'https://www.videovision-chemnitz.de/'
-  },
   {
     logo: niners,
     name: 'NINERS Chemnitz',
@@ -29,6 +28,16 @@ const primePartner = [
     logo: eins,
     name: 'EINS Energie in Sachsen',
     link: 'https://www.eins.de/'
+  },
+  {
+    logo: sparkasse,
+    name: 'Sparkasse Chemnitz',
+    link: 'https://www.spk-chemnitz.de/'
+  },
+  {
+    logo: videovision,
+    name: 'VideoVision',
+    link: 'https://www.videovision-chemnitz.de/'
   }
 ];
 
@@ -45,7 +54,8 @@ const partner = [
   },
   {
     logo: cb,
-    name: 'Chemnitz Basketball'
+    name: 'Chemnitz Basketball',
+    link: 'https://www.chemnitzbasketball.com'
   },
   {
     logo: haase,
@@ -66,6 +76,16 @@ const partner = [
     logo: cwe,
     name: 'CWE',
     link: 'https://www.cawg.de'
+  },
+  {
+    logo: rentenBoster,
+    name: 'Renten Booster',
+    link: 'http://www.doublexclusive.de'
+  },
+  {
+    logo: elektroVieweg,
+    name: 'Elektro Vieweg',
+    link: 'https://www.elektro-vieweg.de'
   }
 ];
 
