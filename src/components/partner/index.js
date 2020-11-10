@@ -18,6 +18,9 @@ import sparkasse from '../../assets/images/partner-logos/sparkasse-chemnitz.svg'
 import rentenBoster from '../../assets/images/partner-logos/renten-booster.svg';
 import elektroVieweg from '../../assets/images/partner-logos/elektro-vieweg.svg';
 
+import cefeg from '../../assets/images/partner-logos/cefeg.svg';
+import fdtech from '../../assets/images/partner-logos/fdtech.svg';
+
 const primePartner = [
   {
     logo: niners,
@@ -86,6 +89,16 @@ const partner = [
     logo: elektroVieweg,
     name: 'Elektro Vieweg',
     link: 'https://www.elektro-vieweg.de'
+  },
+  {
+    logo: cefeg,
+    name: 'CEFEG',
+    link: 'https://www.cefeg.de'
+  },
+  {
+    logo: fdtech,
+    name: 'FDTech',
+    link: 'https://www.fdtech.de/'
   }
 ];
 
