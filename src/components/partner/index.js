@@ -20,6 +20,7 @@ import elektroVieweg from '../../assets/images/partner-logos/elektro-vieweg.svg'
 
 import cefeg from '../../assets/images/partner-logos/cefeg.svg';
 import fdtech from '../../assets/images/partner-logos/fdtech.svg';
+import sgs from '../../assets/images/partner-logos/sgs.svg';
 
 const primePartner = [
   {
@@ -41,6 +42,11 @@ const primePartner = [
     logo: videovision,
     name: 'VideoVision',
     link: 'https://www.videovision-chemnitz.de/'
+  },
+  {
+    logo: sgs,
+    name: 'So geht Sächsisch',
+    link: 'https://www.so-geht-saechsisch.de'
   }
 ];
 
