@@ -1,6 +1,7 @@
 import React from "react";
 
 import Container from '../container';
+import Headline from '../headline';
 
 import styles from './index.module.scss';
 import admedia from '../../assets/images/partner-logos/admedia.svg';
@@ -112,7 +113,6 @@ const Listing = ({ partner, type='normal' }) => {
   return (
     <div className={styles.listing} data-type={type}>
       {partner.map((partner, index) => {
-        console.log(partner.link);
         if (partner.link) {
           return (
             <a key={index} href={partner.link} rel="noreferrer" target="_blank" className={styles.item}>
@@ -135,7 +135,9 @@ const Partner = () => {
   return (
     <div className={styles.partner}>
       <Container>
-        <h2 className={styles.headline}><span>Unsere</span> Partner</h2>
+        <Headline>
+          <span>Unsere</span> Partner
+        </Headline>
         <Listing partner={primePartner} type='large'/>
         <Listing partner={partner}/>
         <div className={styles.cta}>

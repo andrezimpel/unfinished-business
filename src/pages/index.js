@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import Partner from '../components/partner';
+import Products from '../components/products';
 import Seo from '../components/seo';
 import Statement from '../components/statement';
 import Video from '../components/video';
@@ -22,6 +23,7 @@ const Home = () => (
     />
     <Video/>
     <Statement/>
+    <Products/>
     <Partner/>
   </Layout>
 )
