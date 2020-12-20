@@ -32,7 +32,7 @@ const Products = () => {
 
   const Product = ({ title, variants }) => {
     const currentVariant = variants[0];
-    console.log(currentVariant);
+    console.log('variant', currentVariant);
     return (
       <div className={styles.title}>{title}</div>
     )
