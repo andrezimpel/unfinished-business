@@ -49,6 +49,15 @@ module.exports = {
         environment: activeEnv,
         enabled: (() => ["production", "staging"].indexOf(activeEnv) !== -1)()
       }
+    },
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: process.env.SHOPIFY_SHOP_NAME,
+        // The storefront access token
+        accessToken: process.env.SHOPIFY_STOREFRONT_TOKEN,
+      },
     }
   ],
 }
