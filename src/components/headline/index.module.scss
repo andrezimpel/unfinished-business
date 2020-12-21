@@ -1,0 +1,17 @@
+@import '../../assets/theme.scss';
+
+.headline {
+  color: white;
+  font-family: $futura, sans-serif;
+  font-size: 2.2em;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 1.2em;
+  text-align: center;
+  text-transform: uppercase;
+
+  span {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+  }
+}

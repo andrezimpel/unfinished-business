@@ -1,0 +1,63 @@
+@import '../../assets/theme.scss';
+
+.item {
+  @include media-breakpoint-up(md) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & + .item {
+    margin-top: 40px;
+  }
+}
+
+.image {
+  border-radius: 4px;
+  margin-right: 16px;
+
+  @include media-breakpoint-down(sm) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  max-width: 240px;
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 16px;
+  }
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.price {
+  color: $gray;
+  margin-right: 8px;
+}
+
+.quantity {
+  color: $gray;
+  margin-right: 16px;
+}
+
+.subtotal {
+  font-weight: bold;
+}
+
+.money {
+  display: flex;
+  line-height: 1.4;
+  margin-right: 24px;
+
+  @include media-breakpoint-down(sm) {
+    margin: 8px 0 16px 0;
+  }
+}

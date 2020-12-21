@@ -1,6 +1,7 @@
 import React from "react";
 
 import Container from '../container';
+import Headline from '../headline';
 
 import styles from './index.module.scss';
 import admedia from '../../assets/images/partner-logos/admedia.svg';
@@ -134,7 +135,9 @@ const Partner = () => {
   return (
     <div className={styles.partner}>
       <Container>
-        <h2 className={styles.headline}><span>Unsere</span> Partner</h2>
+        <Headline>
+          <span>Unsere</span> Partner
+        </Headline>
         <Listing partner={primePartner} type='large'/>
         <Listing partner={partner}/>
         <div className={styles.cta}>

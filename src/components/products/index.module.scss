@@ -1,0 +1,102 @@
+@import '../../assets/theme.scss';
+
+.products {
+  color: white;
+  line-height: 1.6;
+  margin: $space-30 0;
+
+  @include media-breakpoint-up(md) {
+    line-height: 1.7;
+    margin: $space-80 0;
+  }
+}
+
+.grid {
+  margin: -24px;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.product {
+  padding: 24px;
+
+  @include media-breakpoint-up(md) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    & + .product {
+      margin-top: 24px;
+    }
+  }
+}
+
+.imageWrapper {
+  @include animate(.2s);
+
+  border: 1px solid $gray-dark;
+  border-radius: 2px;
+  margin-bottom: 16px;
+
+  &:hover {
+    border-color: $gray;
+  }
+}
+
+.image {
+  border: 4px solid $black;
+  border-radius: 2px;
+}
+
+.content {
+  padding: 0 8px;
+}
+
+.title {
+  color: white;
+  font-size: 1.15em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 24px 8px;
+  text-transform: uppercase;
+}
+
+.descriptionContainer {
+  margin: 24px 0 16px 0;
+}
+
+.descriptionWrapper {
+  @include animate(.4s);
+
+  border-radius: 4px;
+  max-height: 140px;
+  overflow: hidden;
+
+  &[data-open="true"] {
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
+.description {
+  background-color: darken($gray-dark, 7%);
+  border-radius: 4px;
+  padding: 16px;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.descriptionToggle {
+  background-color: $black;
+  border: none;
+  color: $gray;
+  outline: none;
+  margin-top: 4px;
+  padding: 8px;
+}

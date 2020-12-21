@@ -1,0 +1,97 @@
+@import '../../assets/theme.scss';
+
+.wrapper {
+  @include animate(.35s);
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding-top: 0;
+  position: fixed;
+  transform: translateY(100vh);
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+
+  &[data-open="true"] {
+    transform: translateY(0);
+  }
+}
+
+.close {
+  color: $primary;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 16px;
+  z-index: 12;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.content {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.5);
+  max-height: 80vh;
+  max-width: 800px;
+  overflow-y: scroll;
+  padding: 24px;
+  position: relative;
+  width: calc(100vw - 20px);
+  z-index: 11;
+}
+
+.backdrop {
+  background-color: rgba($black, .85);
+  left: 0;
+  height: 200vh;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 7;
+
+  &[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.headline {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.items {
+  margin-bottom: 32px;
+}
+
+.infos {
+  border-top: 1px solid $gray;
+  padding-top: 24px;
+}
+
+.summary {
+  margin-bottom: 16px;
+}
+
+.subtotal {
+  color: $gray;
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.help {
+  color: $gray;
+  font-size: .75em;
+  margin: 8px 0 16px 0;
+}
