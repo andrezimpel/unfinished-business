@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -19,7 +19,7 @@ const Products = () => {
             images {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 535, quality: 80) {
+                  fluid(maxWidth: 521, quality: 80) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -60,23 +60,6 @@ const Products = () => {
     }
   `);
 
-  const Product = ({ title, description, image, options, variants, priceRange }) => {
-    return (
-      <div className={styles.product}>
-        <div className={styles.imageWrapper}>
-          <div className={styles.image}>
-            <Img fluid={image.localFile.childImageSharp.fluid}/>
-          </div>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}/>
-          <ProductForm product={{ options, variants, priceRange }}/>
-        </div>
-      </div>
-    )
-  };
-
   const items = products.edges.map(node => (
     <Product
       key={node.node.id}
@@ -93,7 +76,7 @@ const Products = () => {
     <div className={styles.products}>
       <Container>
         <Headline>
-          <span>Merchandise</span> Merchandise
+          <span>Unterstütze</span> Uns
         </Headline>
         <div className={styles.grid}>
           {items}
@@ -102,5 +85,31 @@ const Products = () => {
     </div>
   )
 }
+
+const Product = ({ title, description, image, options, variants, priceRange }) => {
+  const [showDescription, setShowDescription] = useState(false);
+
+  const buttonLabel = showDescription ? 'Beschreibung ausblenden' : 'Beschreibung anzeigen'
+
+  return (
+    <div className={styles.product}>
+      <div className={styles.imageWrapper}>
+        <div className={styles.image}>
+          <Img fluid={image.localFile.childImageSharp.fluid}/>
+        </div>
+      </div>
+      <div className={styles.content}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.descriptionContainer}>
+          <div className={styles.descriptionWrapper} data-open={showDescription}>
+            <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}/>
+          </div>
+          <button className={styles.descriptionToggle} onClick={() => setShowDescription(!showDescription)}>{buttonLabel}</button>
+        </div>
+        <ProductForm product={{ options, variants, priceRange }}/>
+      </div>
+    </div>
+  )
+};
 
 export default Products;

@@ -113,7 +113,7 @@ const ProductForm = ({ product }) => {
       />
       {variants.length > 1 && options.map(({ id, name, values }, index) => (
         <React.Fragment key={id}>
-          <label htmlFor={name}>{name} </label>
+          <label className={styles.label} htmlFor={name}>{name}</label>
           <select
             name={name}
             key={id}
@@ -134,7 +134,6 @@ const ProductForm = ({ product }) => {
         </React.Fragment>
       ))}
       <div className={styles.product}>
-        <div className={styles.price}>{price}</div>
         <Button
           type="submit"
           disabled={!available || adding}
@@ -142,6 +141,7 @@ const ProductForm = ({ product }) => {
         >
           In den Warenkorb
         </Button>
+        <div className={styles.price}>{price}</div>
       </div>
       {!available && <p>This Product is out of Stock!</p>}
     </>
