@@ -112,7 +112,6 @@ const Listing = ({ partner, type='normal' }) => {
   return (
     <div className={styles.listing} data-type={type}>
       {partner.map((partner, index) => {
-        console.log(partner.link);
         if (partner.link) {
           return (
             <a key={index} href={partner.link} rel="noreferrer" target="_blank" className={styles.item}>

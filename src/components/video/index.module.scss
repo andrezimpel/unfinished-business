@@ -27,3 +27,17 @@
     width: 100%;
   }
 }
+
+.button {
+  background-color: transparent;
+  border: none;
+  color: $gray;
+  display: block;
+  line-height: 1em;
+  margin: 20px auto 0 auto;
+  outline: none !important;
+
+  &:hover {
+    color: $primary;
+  }
+}
