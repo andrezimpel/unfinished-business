@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 
 import Container from '../container';
 
 import styles from './index.module.scss';
 
 const Video = () => {
-  const [showTeaser, setShowTeaser] = useState(false);
+  // const [showTeaser, setShowTeaser] = useState(false);
+  const showTeaser = false;
 
   const teaser = (
     <iframe title='Vimeo Video' src="https://player.vimeo.com/video/428013523" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
@@ -24,10 +26,11 @@ const Video = () => {
         <div className={styles.wrapper}>
           {iframe}
         </div>
-        <button className={styles.button} onClick={() => setShowTeaser(!showTeaser)}>{label}</button>
       </Container>
     </div>
   )
 };
 
 export default Video;
+
+// <button className={styles.button} onClick={() => setShowTeaser(!showTeaser)}>{label}</button>
