@@ -63,11 +63,15 @@ const Products = () => {
   const Product = ({ title, image, options, variants, priceRange }) => {
     return (
       <div className={styles.product}>
-        <div className={styles.image}>
-          <Img fluid={image.localFile.childImageSharp.fluid}/>
+        <div className={styles.imageWrapper}>
+          <div className={styles.image}>
+            <Img fluid={image.localFile.childImageSharp.fluid}/>
+          </div>
         </div>
-        <div className={styles.title}>{title}</div>
-        <ProductForm product={{ options, variants, priceRange }}/>
+        <div className={styles.content}>
+          <div className={styles.title}>{title}</div>
+          <ProductForm product={{ options, variants, priceRange }}/>
+        </div>
       </div>
     )
   };
