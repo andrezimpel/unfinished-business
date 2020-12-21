@@ -17,7 +17,7 @@ const ProductForm = ({ product }) => {
     priceRange: { minVariantPrice },
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
-  const [quantity, setQuantity] = useState(1)
+  const quantity = 1;
   const {
     addVariantToCart,
     store: { client, adding },
@@ -39,16 +39,16 @@ const ProductForm = ({ product }) => {
         }
       })
     },
-    [client.product, productVariant.shopifyId, variants]
+    [client.product, productVariant.shopifyId]
   )
 
   useEffect(() => {
     checkAvailability(product.shopifyId)
   }, [productVariant, checkAvailability, product.shopifyId])
 
-  const handleQuantityChange = ({ target }) => {
-    setQuantity(target.value)
-  }
+  // const handleQuantityChange = ({ target }) => {
+  //   setQuantity(target.value)
+  // }
 
   const handleOptionChange = (optionIndex, { target }) => {
     const { value } = target
@@ -108,7 +108,6 @@ const ProductForm = ({ product }) => {
         min="1"
         max="1"
         step="1"
-        onChange={handleQuantityChange}
         value={quantity}
       />
       {variants.length > 1 && options.map(({ id, name, values }, index) => (
@@ -117,7 +116,7 @@ const ProductForm = ({ product }) => {
           <select
             name={name}
             key={id}
-            onChange={event => handleOptionChange(index, event)}
+            onBlur={event => handleOptionChange(index, event)}
             className={styles.select}
           >
             {values.map(value => (

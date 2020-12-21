@@ -12,7 +12,7 @@ const Video = () => {
   );
 
   const movie = (
-    <iframe src="https://www.youtube-nocookie.com/embed/JZqdBwZCfo0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+    <iframe title='Unfinished Business Film' src="https://www.youtube-nocookie.com/embed/JZqdBwZCfo0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
   );
 
   const label = !showTeaser ? 'Trailer ansehen' : 'Film ansehen';

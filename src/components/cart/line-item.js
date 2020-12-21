@@ -54,7 +54,7 @@ const LineItem = props => {
           {item.variant.price * item.quantity}€
         </div>
       </div>
-      <Button style="secondary" onClick={handleRemove}>Entfernen</Button>
+      <Button variant="secondary" onClick={handleRemove}>Entfernen</Button>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import reduce from 'lodash/reduce';
-import PropTypes from 'prop-types';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import StoreContext from '../../context';
 
