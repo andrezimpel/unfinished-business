@@ -11,6 +11,29 @@
   }
 }
 
+.grid {
+  margin: -20px;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.product {
+  padding: 20px;
+
+  @include media-breakpoint-up(md) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
 .title {
   color: white;
+}
+
+.image {
+  background-color: white;
+  border-radius: 2px;
 }
