@@ -19,7 +19,7 @@ const Products = () => {
             images {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 535) {
+                  fluid(maxWidth: 540) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
