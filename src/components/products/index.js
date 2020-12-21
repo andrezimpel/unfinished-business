@@ -19,7 +19,7 @@ const Products = () => {
             images {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 540) {
+                  fluid(maxWidth: 535, quality: 80) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -60,7 +60,7 @@ const Products = () => {
     }
   `);
 
-  const Product = ({ title, image, options, variants, priceRange }) => {
+  const Product = ({ title, description, image, options, variants, priceRange }) => {
     return (
       <div className={styles.product}>
         <div className={styles.imageWrapper}>
@@ -70,6 +70,7 @@ const Products = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{title}</div>
+          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}/>
           <ProductForm product={{ options, variants, priceRange }}/>
         </div>
       </div>
@@ -84,6 +85,7 @@ const Products = () => {
       variants={node.node.variants}
       image={[...node.node.images][0]}
       priceRange={node.node.priceRange}
+      description={node.node.descriptionHtml}
     />
   ));
 
@@ -91,7 +93,7 @@ const Products = () => {
     <div className={styles.products}>
       <Container>
         <Headline>
-          <span>Unterstütze</span> Uns
+          <span>Merchandise</span> Merchandise
         </Headline>
         <div className={styles.grid}>
           {items}

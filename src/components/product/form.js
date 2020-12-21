@@ -3,7 +3,11 @@ import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 
+import Button from '../button';
+
 import StoreContext from '../../context';
+
+import styles from './form.module.scss';
 
 const ProductForm = ({ product }) => {
   const {
@@ -91,20 +95,30 @@ const ProductForm = ({ product }) => {
 
   const price = Intl.NumberFormat(undefined, {
     currency: minVariantPrice.currencyCode,
-    minimumFractionDigits: 2,
+    minimumFractionDigits: 0,
     style: 'currency',
   }).format(variant.price)
 
   return (
     <>
-      <div>{price}</div>
-      {options.map(({ id, name, values }, index) => (
+      <input
+        type="hidden"
+        id="quantity"
+        name="quantity"
+        min="1"
+        max="1"
+        step="1"
+        onChange={handleQuantityChange}
+        value={quantity}
+      />
+      {variants.length > 1 && options.map(({ id, name, values }, index) => (
         <React.Fragment key={id}>
           <label htmlFor={name}>{name} </label>
           <select
             name={name}
             key={id}
             onChange={event => handleOptionChange(index, event)}
+            className={styles.select}
           >
             {values.map(value => (
               <option
@@ -119,23 +133,16 @@ const ProductForm = ({ product }) => {
           <br />
         </React.Fragment>
       ))}
-      <input
-        type="hidden"
-        id="quantity"
-        name="quantity"
-        min="1"
-        max="1"
-        step="1"
-        onChange={handleQuantityChange}
-        value={quantity}
-      />
-      <button
-        type="submit"
-        disabled={!available || adding}
-        onClick={handleAddToCart}
-      >
-        Add to Cart
-      </button>
+      <div className={styles.product}>
+        <div className={styles.price}>{price}</div>
+        <Button
+          type="submit"
+          disabled={!available || adding}
+          onClick={handleAddToCart}
+        >
+          In den Warenkorb
+        </Button>
+      </div>
       {!available && <p>This Product is out of Stock!</p>}
     </>
   )

@@ -1,0 +1,16 @@
+@import '../../assets/theme.scss';
+
+.button {
+  @include animate(.2s);
+  
+  background-color: $primary;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 8px 16px;
+
+  &:hover {
+    background-color: darken($primary, 5%);
+    color: white;
+  }
+}
