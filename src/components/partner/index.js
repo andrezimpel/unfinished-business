@@ -90,7 +90,7 @@ const partner = [
   {
     logo: rentenBoster,
     name: 'Renten Booster',
-    link: 'http://www.doublexclusive.de'
+    link: 'https://www.renten-booster.de'
   },
   {
     logo: elektroVieweg,
