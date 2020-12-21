@@ -4,13 +4,14 @@ import Img from 'gatsby-image';
 
 import Container from '../container';
 import Headline from '../headline';
+import ProductForm from '../product/form';
 
 import styles from './index.module.scss';
 
 const Products = () => {
   const { products } = useStaticQuery(graphql`
     {
-      products: allShopifyProduct(sort: { fields: [title] }) {
+      products: allShopifyProduct(sort: {fields: [variants___price]}) {
         edges {
           node {
             id
@@ -18,7 +19,7 @@ const Products = () => {
             images {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 400) {
+                  fluid(maxWidth: 535) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -27,9 +28,31 @@ const Products = () => {
             shopifyId
             descriptionHtml
             availableForSale
+            options {
+              id
+              name
+              values
+            }
             variants {
-              price
+              id
               title
+              price
+              availableForSale
+              shopifyId
+              selectedOptions {
+                name
+                value
+              }
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
             }
           }
         }
@@ -37,29 +60,28 @@ const Products = () => {
     }
   `);
 
-  const Product = ({ title, image, variants }) => {
-    const currentVariant = variants[0];
-    console.log('variant', currentVariant);
-    console.log('image', image);
+  const Product = ({ title, image, options, variants, priceRange }) => {
     return (
       <div className={styles.product}>
         <div className={styles.image}>
           <Img fluid={image.localFile.childImageSharp.fluid}/>
         </div>
         <div className={styles.title}>{title}</div>
-        <div className={styles.price}>{currentVariant.price}</div>
-        {( variants.length > 1 &&
-          <select>
-            {( variants.map((variant, index) => (
-              <option key={index}>{variant.price} - {variant.title}</option>
-            )))}
-          </select>
-        )}
+        <ProductForm product={{ options, variants, priceRange }}/>
       </div>
     )
   };
 
-  const items = products.edges.map(node => <Product key={node.node.id} title={node.node.title} variants={node.node.variants} image={[...node.node.images][0]}/>);
+  const items = products.edges.map(node => (
+    <Product
+      key={node.node.id}
+      title={node.node.title}
+      options={node.node.options}
+      variants={node.node.variants}
+      image={[...node.node.images][0]}
+      priceRange={node.node.priceRange}
+    />
+  ));
 
   return (
     <div className={styles.products}>
