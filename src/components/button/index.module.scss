@@ -2,7 +2,7 @@
 
 .button {
   @include animate(.2s);
-  
+
   background-color: $primary;
   border: none;
   border-radius: 3px;
@@ -12,5 +12,17 @@
   &:hover {
     background-color: darken($primary, 5%);
     color: white;
+  }
+
+  &[data-type="secondary"] {
+    background-color: $gray;
+    color: $black;
+    font-size: .85em;
+    padding: 3px 8px;
+
+    &:hover {
+      background-color: darken($gray, 5%);
+      color: white;
+    }
   }
 }
