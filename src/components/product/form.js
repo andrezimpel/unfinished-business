@@ -142,7 +142,7 @@ const ProductForm = ({ product }) => {
         </Button>
         <div className={styles.price}>{price}</div>
       </div>
-      {!available && <p>This Product is out of Stock!</p>}
+      {!available && <p>Das Produkt ist ausverkauft!</p>}
     </>
   )
 }
