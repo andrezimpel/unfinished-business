@@ -7,6 +7,7 @@ require("dotenv").config({
 });
 
 module.exports = {
+  pathPrefix: `/unfinished-business`,
   siteMetadata: {
     title: `UNFINISHED BUSINESS`,
     siteUrl: process.env.SITE_URL
